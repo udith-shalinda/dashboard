@@ -1,0 +1,22 @@
+<mat-sidenav-container class="h-full">
+    <mat-sidenav #sidenav mode="side" [opened]="true" class="bg-blue-500 text-white">
+      <mat-nav-list>
+        <mat-list-item routerLink="/setting">Home</mat-list-item>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>Menu 1</mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-nav-list>
+            <a mat-list-item routerLink="/dashboard">Submenu 1</a>
+            <a mat-list-item routerLink="/setting">Submenu 2</a>
+          </mat-nav-list>
+        </mat-expansion-panel>
+        <mat-list-item routerLink="/dashboard">Menu 2</mat-list-item>
+        <!-- Add more menu items as needed -->
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  
