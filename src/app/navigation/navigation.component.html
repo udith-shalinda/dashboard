@@ -1,52 +1,63 @@
 <div class="h-full w-full flex">
-    <ul nz-menu nzMode="inline" style="width: 300px;" class="bg-sky-950 text-white">
-        <li nz-submenu nzTitle="Menu One" nzIcon="mail" nzOpen>
-          <ul class="bg-sky-950 text-white">
-              <ul  class="bg-sky-950 text-white">
-                <li nz-menu-item nzSelected routerLink="/dashboard">
-                    <div class="flex gap-x-4 items-center">
-                        <span nz-icon nzType="exclamation-circle" nzTheme="outline"></span>
-                        Dashboard
-                    </div>
-                </li>
-                <li nz-menu-item routerLink="/setting">
-                    <div class="flex gap-x-4 items-center">
-                        <span nz-icon nzType="exclamation-circle" nzTheme="outline"></span>
-                        Setting
-                    </div>
-                </li>
-              </ul>
-          </ul>
-        </li>
-        <li nz-submenu nzTitle="Menu Two" nzIcon="appstore">
-          <ul class="bg-sky-950 text-white">
-            <li nz-menu-item>Option 5 
-                <span nz-icon nzType="sliders" nzTheme="outline"></span>
-            </li>
-            <li nz-menu-item>Option 6</li>
+  <ul
+    nz-menu
+    nzMode="inline"
+    style="width: 300px"
+    class="bg-sky-950 text-white"
+  >
+    <li nz-submenu nzTitle="Menu One" nzOpen>
+      <ul class="bg-sky-950 text-white">
+        <ul class="bg-sky-950 text-white">
+          <li nz-menu-item nzSelected routerLink="/dashboard">
+            <div class="flex gap-x-4 items-center">
+              <span
+                nz-icon
+                nzType="exclamation-circle"
+                nzTheme="outline"
+              ></span>
+              Audits
+            </div>
+          </li>
+          <li nz-menu-item routerLink="/setting">
+            <div class="flex gap-x-4 items-center">
+              <span
+                nz-icon
+                nzType="exclamation-circle"
+                nzTheme="outline"
+              ></span>
+              Setting
+            </div>
+          </li>
+        </ul>
+      </ul>
+    </li>
+    <li nz-submenu nzTitle="Menu Two">
+      <ul class="bg-sky-950 text-white">
+        <li nz-menu-item>Option 5</li>
+        <li nz-menu-item>Option 6</li>
+        <li nz-submenu nzTitle="Submenu">
+          <ul class="bg-sky-950 text-white border-none">
+            <li nz-menu-item>Option 7</li>
+            <li nz-menu-item>Option 8</li>
             <li nz-submenu nzTitle="Submenu">
               <ul class="bg-sky-950 text-white border-none">
-                <li nz-menu-item>Option 7</li>
-                <li nz-menu-item>Option 8</li>
-                <li nz-submenu nzTitle="Submenu">
-                  <ul class="bg-sky-950 text-white border-none">
-                    <li nz-menu-item>Option 9</li>
-                    <li nz-menu-item>Option 10</li>
-                  </ul>
-                </li>
+                <li nz-menu-item>Option 9</li>
+                <li nz-menu-item>Option 10</li>
               </ul>
             </li>
-          </ul>
-        </li>
-        <li nz-submenu nzTitle="Menu Three" nzIcon="setting">
-          <ul class="bg-sky-950 text-white">
-            <li nz-menu-item>Option 11</li>
-            <li nz-menu-item>Option 12</li>
-            <li nz-menu-item>Option 13</li>
           </ul>
         </li>
       </ul>
-      <div class="w-full">
-        <router-outlet></router-outlet>
-      </div>
+    </li>
+    <li nz-submenu nzTitle="Menu Three">
+      <ul class="bg-sky-950 text-white">
+        <li nz-menu-item>Option 11</li>
+        <li nz-menu-item>Option 12</li>
+        <li nz-menu-item>Option 13</li>
+      </ul>
+    </li>
+  </ul>
+  <div class="w-full">
+    <router-outlet></router-outlet>
+  </div>
 </div>

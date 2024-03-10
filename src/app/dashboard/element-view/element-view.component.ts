@@ -1,31 +1,34 @@
-import { Component } from '@angular/core';
-import { NzIconModule } from 'ng-zorro-antd/icon';
-import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
-import { NzTableModule } from 'ng-zorro-antd/table';
 import { CommonModule } from '@angular/common';
-import { Router, RouterLink } from '@angular/router';
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzTableModule } from 'ng-zorro-antd/table';
 
 interface ItemData {
   id: number;
   name: string;
-  age: number;
-  address: string;
+  uomUnit: string;
+  uomCount: number;
+  unitCost: number;
 }
 
 @Component({
-  selector: 'app-dashboard',
+  selector: 'app-element-view',
   standalone: true,
   imports: [
     NzIconModule,
     NzDropDownModule,
     NzTableModule,
     CommonModule,
-    RouterLink,
+    FormsModule,
   ],
-  templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.scss',
+  templateUrl: './element-view.component.html',
+  styleUrl: './element-view.component.scss',
 })
-export class DashboardComponent {
+export class ElementViewComponent {
+  data: any;
   listOfSelection = [
     {
       text: 'Select All Row',
@@ -55,10 +58,19 @@ export class DashboardComponent {
   checked = false;
   indeterminate = false;
   listOfCurrentPageData: readonly ItemData[] = [];
-  listOfData: readonly ItemData[] = [];
+  listOfData: readonly ItemData[] = [
+    { id: 1, name: 'Eggs', uomUnit: 'each', uomCount: 3, unitCost: 12 },
+    {
+      id: 2,
+      name: 'Large Cups',
+      uomUnit: 'cartoon',
+      uomCount: 3,
+      unitCost: 12,
+    },
+  ];
   setOfCheckedId = new Set<number>();
 
-  constructor(private _router: Router) {}
+  constructor(private route: ActivatedRoute) {}
 
   updateCheckedSet(id: number, checked: boolean): void {
     if (checked) {
@@ -96,22 +108,12 @@ export class DashboardComponent {
   }
 
   onEditPress(item: any): void {
-    this._router.navigate(['dashboard/element'], {
-      queryParams: {
-        item: JSON.stringify({
-          id: item.id,
-          name: item.name,
-        }),
-      },
-    });
+    console.log({ item });
   }
 
   ngOnInit(): void {
-    this.listOfData = new Array(200).fill(0).map((_, index) => ({
-      id: index,
-      name: `Edward King ${index}`,
-      age: index % 5,
-      address: `London, Park Lane no. ${index}`,
-    }));
+    this.route.queryParams.subscribe((params: any) => {
+      this.data = JSON.parse(params.item);
+    });
   }
 }
